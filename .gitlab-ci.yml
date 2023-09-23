@@ -1,0 +1,62 @@
+build-job:
+  stage: build
+  script:
+    - pwd
+    - mkdir public
+    - cd src/cat
+    - make
+    - mv s21_cat ../../public
+    - cd ../grep
+    - make
+    - mv s21_grep ../../public
+  artifacts:
+    paths:
+    - public/
+  after_script:
+    - cd src
+    - chmod +x bot.sh
+    - bash bot.sh Build
+  tags:
+    - bash
+
+clang-test:
+  stage: test
+  script:
+    - echo "clang test"
+    - cd src
+    - cp ../materials/linters/.clang-format ./
+    - clang-format -n --Werror cat/*.c cat/*.h grep/*.c grep/*.h
+  after_script:
+    - cd src
+    - chmod +x bot.sh
+    - bash bot.sh Clang-test
+  tags:
+    - bash
+
+unit-test:
+  stage: test
+  script:
+    - echo "unit test"
+    - cd src/cat
+    - make test
+  after_script:
+    - cd src
+    - chmod +x bot.sh
+    - bash bot.sh Unit-test
+  tags:
+    - bash
+
+deploy-prod:
+  stage: deploy
+  script:
+    - echo "deploy task"
+    - scp public/s21_cat root@deploy:/usr/local/bin
+    - scp public/s21_grep root@deploy:/usr/local/bin
+  allow_failure: false
+  when: manual
+  after_script:
+    - cd src
+    - chmod +x bot.sh
+    - bash bot.sh Deploy
+  tags:
+    - bash
