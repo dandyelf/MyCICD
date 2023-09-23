@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  my_gitrun:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gitrun-my
+    image: git:run
+    hostname: gitrun
+
+  deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    container_name: deploy-my
+    image: deploy:run
+    hostname: deploy

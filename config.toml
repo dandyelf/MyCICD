@@ -1,0 +1,17 @@
+concurrent = 1
+check_interval = 0
+shutdown_timeout = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "test"
+  url = "https://repos.21-school.ru"
+  id = 3416
+  token = "97AkASYvAi3jQZWSTXqL"
+  token_obtained_at = 2023-05-19T05:41:00Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0

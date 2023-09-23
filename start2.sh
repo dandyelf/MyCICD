@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCcjWhp2ladMHI3cEQ+m4gZsEbeTiIWAeY+n2oqDDNQu+w75SybjcxQ1byBhLngGZ6dqrSBJkHsRjTn3wJQLBsUodbB5llPb7sjxZZvD01Qdbk4mm6/+rPBs5DEh/hwlAgsrIS8YqxmMj8tlOoeH6pF86iuL4xCDDCg/vi3VQ4hb8LbRwegyTpCciSqhU62lo3qj79NV+lM+K2wUGrs+FA4mXnFAOY8VNTn9wJ/lWiNUcdDYM4A6+sO1TOdAv/d4evbbl2UmV86hfCetUe8mzdDdbGZy8npFcBrCUhpTRBCEvlmMfQ6rmjlTNdP5/7g77Sg3QnvBCQ3JPFLnz5gqoPH9TwvU3RGpZ8JZC9/Nn0YRlR4H3KqTJEf+c/TyKLy2scCrcADq057BYotk5l4XGiWQaCR+bCWDCb8IaqdaEbAcRmNsjhcwE1ZYK6aNhria8sXRVRFDYjamLk3FdPSyEo0Ly+Bi4zh1zgk5MWVpGxSNvFmwwh8/j6TN5FUhbm6m2s= gitlab-runner@gitrun >> /root/.ssh/authorized_keys
+
+/etc/init.d/ssh start
+gitlab-runner run
